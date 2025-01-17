@@ -25,6 +25,16 @@ a:hover{
     text-align: center;
     padding: 50px 0;
     background: linear-gradient(90deg, #222, #333);
+    background-image: url("../images/background.jpg"); /* Путь к картинке */
+    background-size: cover; /* Растягивает изображение на всю область */
+    background-position: center; /* Центрирует картинку */
+    background-repeat: no-repeat; /* Отключает повторение */
+    height: 100vh; /* Высота на весь экран */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
 }
 button.buy-btn {
     background-color: red;
