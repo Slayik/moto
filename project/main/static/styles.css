@@ -1,13 +1,18 @@
 body {
     background-color: #111;
-    color: white;
-    font-family: Arial, sans-serif;
+    font-family: serif, sans-serif;
+    background-image: url("images/background.jpg");  /* Устанавливаем изображение */
+    background-size: cover;                          /* Растягиваем изображение на весь экран */
+    background-position: center;                     /* Центрируем изображение */
+    background-repeat: no-repeat;                    /* Отключаем повторение */
+    color: white;                                    /* Устанавливаем цвет текста */
 }
 header nav {
     display: flex;
     justify-content: space-between;
     padding: 20px;
     background: #222;
+    background: rgba(0, 0, 0, 0.5)
 }
 ul {
     list-style: none;
@@ -25,15 +30,12 @@ a:hover{
     text-align: center;
     padding: 50px 0;
     background: linear-gradient(90deg, #222, #333);
-    background-image: url("../images/background.jpg"); /* Путь к картинке */
-    background-size: cover; /* Растягивает изображение на всю область */
-    background-position: center; /* Центрирует картинку */
-    background-repeat: no-repeat; /* Отключает повторение */
-    height: 100vh; /* Высота на весь экран */
+    background: rgba(0, 0, 0, 0); /* Прозрачный черный фон с 50% прозрачностью */
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    font-size: 40px;
+    color: rgb(208, 45, 48);
     text-align: center;
 }
 button.buy-btn {
