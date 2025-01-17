@@ -14,9 +14,12 @@ ul {
     display: flex;
     gap: 20px;
 }
-a {
+a { font-size: 25px;
     text-decoration: none;
     color: white;
+}
+a:hover{
+    color: #ffcf48;
 }
 .hero {
     text-align: center;
@@ -41,4 +44,5 @@ button.buy-btn {
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+
 }
