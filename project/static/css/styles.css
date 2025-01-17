@@ -1,36 +1,39 @@
 body {
     background-color: #111;
     font-family: serif, sans-serif;
-    background-image: url("images/background.jpg");  /* Устанавливаем изображение */
+    background-image: url("/static/images/background.jpg");
     background-size: cover;                          /* Растягиваем изображение на весь экран */
     background-position: center;                     /* Центрируем изображение */
     background-repeat: no-repeat;                    /* Отключаем повторение */
     color: white;                                    /* Устанавливаем цвет текста */
 }
+
 header nav {
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    background: #222;
-    background: rgba(0, 0, 0, 0.5)
+    background: rgba(0, 0, 0, 0.5);  /* Полупрозрачный черный фон */
 }
+
 ul {
     list-style: none;
     display: flex;
     gap: 20px;
 }
-a { font-size: 25px;
+
+a {
+    font-size: 25px;
     text-decoration: none;
     color: white;
 }
-a:hover{
-    color: #ffcf48;
+
+a:hover {
+    color: #ffcf48;  /* Желтый цвет при наведении */
 }
+
 .hero {
-    text-align: center;
     padding: 50px 0;
-    background: linear-gradient(90deg, #222, #333);
-    background: rgba(0, 0, 0, 0); /* Прозрачный черный фон с 50% прозрачностью */
+    background: rgba(0, 0, 0, 0); /* Прозрачный черный фон */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,23 +41,31 @@ a:hover{
     color: rgb(208, 45, 48);
     text-align: center;
 }
+
 button.buy-btn {
     background-color: red;
     color: white;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
+    border-radius: 5px;  /* Скругленные углы */
+    transition: background-color 0.3s ease;  /* Плавное изменение цвета при наведении */
 }
+
+button.buy-btn:hover {
+    background-color: #e60000;  /* Тёмный красный при наведении */
+}
+
 .product-grid {
     display: flex;
     justify-content: center;
     gap: 20px;
     padding: 20px;
 }
+
 .product-item {
     background: #222;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-
 }

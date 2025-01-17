@@ -125,7 +125,7 @@ STATIC_URL = '/static/'
   # URL, по которому доступны статические файлы
 
 STATICFILES_DIRS = [
-    BASE_DIR / "main" / "static",
+    BASE_DIR  / "static",
 ]
 
 # Default primary key field type
