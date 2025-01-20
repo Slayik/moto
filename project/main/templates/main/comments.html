@@ -1,0 +1,57 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мотоциклы - Интернет-магазин</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Мото в наличии</a></li>
+                <li><a href="#">Мото под заказ</a></li>
+                <li><a href="#">Мотоэкипировка</a></li>
+                <li><a href="#">Обратный звонок</a></li>
+                <li><a href="#">О компании</a></li>
+                <li><a href="#">Контакты</a></li>
+                <li><a href="#">Отзывы</a></li>
+            </ul>
+            <button class="login-btn">Войти</button>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>МОТОЦИКЛЫ</h1>
+                <p>В наличии и под заказ</p>
+                <button class="buy-btn">Купить сейчас</button>
+            </div>
+        </section>
+        <section class="filters">
+            <h2>Фильтры</h2>
+            <div class="filter-options">
+                <label>Цвет:
+                    <select>
+                        <option>Красный</option>
+                        <option>Черный</option>
+                        <option>Синий</option>
+                    </select>
+                </label>
+                <label>Модель:
+                    <select>
+                        <option>Street</option>
+                        <option>Sport</option>
+                    </select>
+                </label>
+          
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Motoshop</p>
+    </footer>
+</body>
+</html>

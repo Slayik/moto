@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path ('', views.index, name = 'index'),
     path('about/', views.about, name = 'about'),
+    path('comments/', views.comments, name='comments'),  # URL для страницы отзывов
+    path('index/', views.index, name='index'),  # URL для страницы отзывов
 ]

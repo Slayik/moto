@@ -14,3 +14,9 @@ def index(request):
 def about(request):
     return HttpResponse('About page')
 
+def comments(request):
+    return render(request, 'main/comments.html')
+
+def index(request):
+    return render(request, 'main/index.html')
+
