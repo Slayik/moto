@@ -21,7 +21,10 @@ from main import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path ('', views.index, name = 'index'),
-    path('about/', views.about, name = 'about'),
+    path('about/', views.about, name = 'about'),        # URL для страницы О нас
     path('comments/', views.comments, name='comments'),  # URL для страницы отзывов
-    path('index/', views.index, name='index'),  # URL для страницы отзывов
+    path('in_stock/', views.index, name='in_stock'),  # URL для страницы В наличии
+    path('to_order/', views.index, name='to_order'),  # URL для страницы Под заказ
+    path('equip/', views.index, name='equip'),  # URL для страницы Экипировка
+    path('contacts/', views.index, name='contacts'),  # URL для страницы Контакты
 ]

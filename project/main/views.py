@@ -12,7 +12,7 @@ def index(request):
 
 #Страница О нас
 def about(request):
-    return HttpResponse('About page')
+    return render(request, 'main/about.html')
 
 def comments(request):
     return render(request, 'main/comments.html')
@@ -20,3 +20,14 @@ def comments(request):
 def index(request):
     return render(request, 'main/index.html')
 
+def in_stock(request):
+    return render(request, 'main/in_stock.html')
+
+def to_order(request):
+    return render(request, 'main/to_order.html')
+
+def equip(request):
+    return render(request, 'main/equip.html')
+
+def contacts(request):
+    return render(request, 'main/contacts.html')

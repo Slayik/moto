@@ -1,0 +1,49 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Интернет-магазин Мотоциклов</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Главная</a></li>
+                <li><a href="{% url 'in_stock' %}">Мото в наличии</a></li>
+                <li><a href="{% url 'to_order' %}">Мото под заказ</a></li>
+                <li><a href="{% url 'equip' %}">Мотоэкипировка</a></li>
+                <li><a href="#">Обратный звонок</a></li>
+                <li><a href="{% url 'about' %}">О компании</a></li>
+                <li><a href="{% url 'contacts' %}">Контакты</a></li>
+                <li><a href="{% url 'comments' %}">Отзывы</a></li>
+            </ul>
+            <a href="#" class="buy-btn">Войти</a>
+        </nav>
+    </header>
+    <main>
+        <section class="contacts">
+            <div class="contacts-content">
+                <h1>Контакты</h1>
+                <p>Свяжитесь с нами любым удобным способом:</p>
+                <ul class="contact-info">
+                    <li><strong>Телефон:</strong> <a href="tel:+375299999999" class="contact-link">+375 (29) 999-99-99</a></li>
+                    <li><strong>Email:</strong> <a href="mailto:info@motoshop.ru" class="contact-link">info@motoshop.by</a></li>
+                    <li><strong>Адрес:</strong> Минск, ул. Примерная, д. 10</li>
+                </ul>
+                <div class="social-links">
+                    <p><strong>Мы в соцсетях:</strong></p>
+                    <a href="https://vk.com" target="_blank" class="social-link">ВКонтакте</a> | 
+                    <a href="https://www.instagram.com" target="_blank" class="social-link">Instagram</a> | 
+                    <a href="https://facebook.com" target="_blank" class="social-link">Facebook</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Motoshop. Все права защищены.</p>
+    </footer>
+</body>
+</html>
