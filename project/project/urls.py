@@ -15,8 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from main import views
+from .views import product_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +28,6 @@ urlpatterns = [
     path('to_order/', views.to_order, name='to_order'),  # Страница "Под заказ"
     path('equip/', views.equip, name='equip'),  # Страница "Экипировка"
     path('contacts/', views.contacts, name='contacts'),  # Страница "Контакты"
+    path('products/', product_list, name='product_list'),  # URL для списка товаров
+    path('', include('prices.urls')),  # Включаем маршруты приложения prices
 ]
