@@ -12,15 +12,15 @@
         <nav>
             <ul>
                 <li><a href="{% url 'index' %}">Главная</a></li>
-                <li><a href="{% url 'in_stock' %}">Мото в наличии</a></li> <!-- Ссылка в наличии -->
-                <li><a href="{% url 'to_order' %}">Мото под заказ</a></li> <!-- Ссылка под заказ -->
-                <li><a href="{% url 'equip' %}">Мотоэкипировка</a></li> <!-- Ссылка на экипировку -->
-                <li><a href="#">Обратный звонок</a></li> <!-- Ссылка на форму обратный звонок -->
-                <li><a href="{% url 'about' %}">О компании</a></li> <!-- Ссылка о компании -->
-                <li><a href="{% url 'contacts' %}">Контакты</a></li> <!-- Ссылка на Контакты -->
-                <li><a href="{% url 'comments' %}">Отзывы</a></li> <!-- Ссылка на отзывы -->
+                <li><a href="{% url 'in_stock' %}">Мото в наличии</a></li>
+                <li><a href="{% url 'to_order' %}">Мото под заказ</a></li>
+                <li><a href="{% url 'equip' %}">Мотоэкипировка</a></li>
+                <li><a href="#">Обратный звонок</a></li>
+                <li><a href="{% url 'about' %}">О компании</a></li>
+                <li><a href="{% url 'contacts' %}">Контакты</a></li>
+                <li><a href="{% url 'comments' %}">Отзывы</a></li>
             </ul>
-            <a href="#" class="buy-btn">Войти</a> <!-- Ссылка вместо кнопки -->
+            <a href="#" class="buy-btn">Войти</a>
         </nav>
     </header>
     <main>
@@ -28,7 +28,7 @@
             <div class="hero-content">
                 <h1>МОТОЦИКЛЫ</h1>
                 <p>В наличии и под заказ</p>
-                <a href="#" class="buy-btn">Купить сейчас</a> <!-- Ссылка вместо кнопки -->
+                <a href="#" class="buy-btn">Купить сейчас</a>
             </div>
         </section>
         <section class="filters">
@@ -50,25 +50,51 @@
             </div>
         </section>
         <section class="products">
-            <h2></h2>
+            <h2>Наши мотоциклы</h2>
             <div class="product-grid">
+                <!-- Изменённые модели с ценами в долларах -->
                 <div class="product-item">
-                    <img src="static/images/bike1.jpg" width="270" height="auto;">
-                    <h3>Honda CB1000R</h3>
-                    <p>Стильный и мощный</p>
-                    <a href="#" class="buy-btn">Заказать</a> <!-- Ссылка вместо кнопки -->
+                    <img src="{% static 'images/ducati_panigale.jpg' %}" width="270" alt="Ducati Panigale V4">
+                    <h3>Ducati Panigale V4</h3>
+                    <p>Идеален для треков и дорог</p>
+                    <p><strong>Цена:</strong> $29,000</p>
+                    <a href="#" class="buy-btn">Купить</a>
                 </div>
                 <div class="product-item">
-                    <img src="static/images/bike2.jpg" width="270" height="auto;">
-                    <h3>Honda Shadow 1100</h3>
-                    <p>Скорость и комфорт</p>
-                    <a href="#" class="buy-btn">Заказать</a> <!-- Ссылка вместо кнопки -->
+                    <img src="{% static 'images/kawasaki_ninja.jpg' %}" width="270" alt="Kawasaki Ninja ZX-10R">
+                    <h3>Kawasaki Ninja ZX-10R</h3>
+                    <p>Для экстремальных скоростей</p>
+                    <p><strong>Цена:</strong> $24,000</p>
+                    <a href="#" class="buy-btn">Купить</a>
                 </div>
                 <div class="product-item">
-                    <img src="static/images/bike3.jpg" width="270" height="auto;">
-                    <h3>Yamaha R1</h3>
-                    <p>Для настоящих гонщиков</p>
-                    <a href="#" class="buy-btn">Заказать</a> <!-- Ссылка вместо кнопки -->
+                    <img src="{% static 'images/bmw_s1000rr.jpg' %}" width="270" alt="BMW S1000RR">
+                    <h3>BMW S1000RR</h3>
+                    <p>Скорость и элегантность</p>
+                    <p><strong>Цена:</strong> $27,000</p>
+                    <a href="#" class="buy-btn">Купить</a>
+                </div>
+                <!-- Новые модели с ценами в долларах -->
+                <div class="product-item">
+                    <img src="{% static 'images/harley_davidson.jpg' %}" width="270" alt="Harley-Davidson Street Glide">
+                    <h3>Harley-Davidson Street Glide</h3>
+                    <p>Для дальних путешествий</p>
+                    <p><strong>Цена:</strong> $38,000</p>
+                    <a href="#" class="buy-btn">Купить</a>
+                </div>
+                <div class="product-item">
+                    <img src="{% static 'images/ktm_1290.jpg' %}" width="270" alt="KTM 1290 Super Duke R">
+                    <h3>KTM 1290 Super Duke R</h3>
+                    <p>Мощность и манёвренность</p>
+                    <p><strong>Цена:</strong> $22,000</p>
+                    <a href="#" class="buy-btn">Купить</a>
+                </div>
+                <div class="product-item">
+                    <img src="{% static 'images/honda_goldwing.jpg' %}" width="270" alt="Honda Gold Wing">
+                    <h3>Honda Gold Wing</h3>
+                    <p>Комфорт и надёжность</p>
+                    <p><strong>Цена:</strong> $45,000</p>
+                    <a href="#" class="buy-btn">Купить</a>
                 </div>
             </div>
         </section>

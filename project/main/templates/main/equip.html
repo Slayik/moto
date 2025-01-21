@@ -5,70 +5,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мотоциклы - Интернет-магазин</title>
+    <title>Мотоэкипировка - Интернет-магазин</title>
 </head>
 <body>
     <header>
         <nav>
             <ul>
                 <li><a href="{% url 'index' %}">Главная</a></li>
-                <li><a href="{% url 'in_stock' %}">Мото в наличии</a></li> <!-- Ссылка в наличии -->
-                <li><a href="{% url 'to_order' %}">Мото под заказ</a></li> <!-- Ссылка под заказ -->
-                <li><a href="{% url 'equip' %}">Мотоэкипировка</a></li> <!-- Ссылка на экипировку -->
-                <li><a href="#">Обратный звонок</a></li> <!-- Ссылка на форму обратный звонок -->
-                <li><a href="{% url 'about' %}">О компании</a></li> <!-- Ссылка о компании -->
-                <li><a href="{% url 'contacts' %}">Контакты</a></li> <!-- Ссылка на Контакты -->
-                <li><a href="{% url 'comments' %}">Отзывы</a></li> <!-- Ссылка на отзывы -->
+                <li><a href="{% url 'in_stock' %}">Мото в наличии</a></li>
+                <li><a href="{% url 'to_order' %}">Мото под заказ</a></li>
+                <li><a href="{% url 'equip' %}">Мотоэкипировка</a></li>
+                <li><a href="#">Обратный звонок</a></li>
+                <li><a href="{% url 'about' %}">О компании</a></li>
+                <li><a href="{% url 'contacts' %}">Контакты</a></li>
+                <li><a href="{% url 'comments' %}">Отзывы</a></li>
             </ul>
-            <a href="#" class="buy-btn">Войти</a> <!-- Ссылка вместо кнопки -->
+            <a href="#" class="buy-btn">Войти</a>
         </nav>
     </header>
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h1>МОТОЦИКЛЫ</h1>
-                <p>В наличии и под заказ</p>
-                <a href="#" class="buy-btn">Купить сейчас</a> <!-- Ссылка вместо кнопки -->
-            </div>
-        </section>
-        <section class="filters">
-            <h2>Фильтры</h2>
-            <div class="filter-options">
-                <label>Цвет:
-                    <select>
-                        <option>Красный</option>
-                        <option>Черный</option>
-                        <option>Синий</option>
-                    </select>
-                </label>
-                <label>Модель:
-                    <select>
-                        <option>Street</option>
-                        <option>Sport</option>
-                    </select>
-                </label>
+                <h1>МОТОЭКИПИРОВКА</h1>
+                <p>Лучшие товары для вашей безопасности и комфорта</p>
             </div>
         </section>
         <section class="products">
-            <h2></h2>
+            <h2>Экипировка</h2>
             <div class="product-grid">
+                <!-- Предметы экипировки -->
                 <div class="product-item">
-                    <img src="static/images/bike1.jpg" width="270" height="auto;">
-                    <h3>Honda CB1000R</h3>
-                    <p>Стильный и мощный</p>
-                    <a href="#" class="buy-btn">Заказать</a> <!-- Ссылка вместо кнопки -->
+                    <img src="{% static 'images/helmet1.jpg' %}" width="270" alt="Шлем AGV K1">
+                    <h3>Шлем AGV K1</h3>
+                    <p>Спортивный шлем с отличной вентиляцией</p>
+                    <p><strong>Цена:</strong> $300</p>
+                    <a href="#" class="buy-btn">Купить</a>
                 </div>
                 <div class="product-item">
-                    <img src="static/images/bike2.jpg" width="270" height="auto;">
-                    <h3>Honda Shadow 1100</h3>
-                    <p>Скорость и комфорт</p>
-                    <a href="#" class="buy-btn">Заказать</a> <!-- Ссылка вместо кнопки -->
+                    <img src="{% static 'images/jacket1.jpg' %}" width="270" alt="Куртка Alpinestars">
+                    <h3>Куртка Alpinestars</h3>
+                    <p>Кожаная куртка с защитой плеч и спины</p>
+                    <p><strong>Цена:</strong> $450</p>
+                    <a href="#" class="buy-btn">Купить</a>
                 </div>
                 <div class="product-item">
-                    <img src="static/images/bike3.jpg" width="270" height="auto;">
-                    <h3>Yamaha R1</h3>
-                    <p>Для настоящих гонщиков</p>
-                    <a href="#" class="buy-btn">Заказать</a> <!-- Ссылка вместо кнопки -->
+                    <img src="{% static 'images/gloves1.jpg' %}" width="270" alt="Перчатки Dainese">
+                    <h3>Перчатки Dainese</h3>
+                    <p>Карбоновая защита для максимальной безопасности</p>
+                    <p><strong>Цена:</strong> $120</p>
+                    <a href="#" class="buy-btn">Купить</a>
+                </div>
+                <div class="product-item">
+                    <img src="{% static 'images/boots1.jpg' %}" width="270" alt="Ботинки TCX">
+                    <h3>Ботинки TCX</h3>
+                    <p>Водонепроницаемые ботинки для туризма</p>
+                    <p><strong>Цена:</strong> $280</p>
+                    <a href="#" class="buy-btn">Купить</a>
+                </div>
+                <div class="product-item">
+                    <img src="{% static 'images/pants1.jpg' %}" width="270" alt="Штаны Revit">
+                    <h3>Штаны Revit</h3>
+                    <p>Кожаные штаны с защитой коленей</p>
+                    <p><strong>Цена:</strong> $350</p>
+                    <a href="#" class="buy-btn">Купить</a>
+                </div>
+                <div class="product-item">
+                    <img src="{% static 'images/helmet2.jpg' %}" width="270" alt="Шлем Shoei GT-Air 2">
+                    <h3>Шлем Shoei GT-Air 2</h3>
+                    <p>Аэродинамичный шлем для дальних поездок</p>
+                    <p><strong>Цена:</strong> $550</p>
+                    <a href="#" class="buy-btn">Купить</a>
+                </div>
+                <div class="product-item">
+                    <img src="{% static 'images/gloves2.jpg' %}" width="270" alt="Перчатки Alpinestars SP-2">
+                    <h3>Перчатки Alpinestars SP-2</h3>
+                    <p>Универсальные перчатки с защитой кисти</p>
+                    <p><strong>Цена:</strong> $150</p>
+                    <a href="#" class="buy-btn">Купить</a>
+                </div>
+                <div class="product-item">
+                    <img src="{% static 'images/backpack.jpg' %}" width="270" alt="Рюкзак Ogio">
+                    <h3>Рюкзак Ogio</h3>
+                    <p>Эргономичный рюкзак для мотоциклистов</p>
+                    <p><strong>Цена:</strong> $200</p>
+                    <a href="#" class="buy-btn">Купить</a>
+                </div>
+                <div class="product-item">
+                    <img src="{% static 'images/boots2.jpg' %}" width="270" alt="Ботинки Forma Adventure">
+                    <h3>Ботинки Forma Adventure</h3>
+                    <p>Прочные ботинки для эндуро</p>
+                    <p><strong>Цена:</strong> $320</p>
+                    <a href="#" class="buy-btn">Купить</a>
+                </div>
+                <div class="product-item">
+                    <img src="{% static 'images/jacket2.jpg' %}" width="270" alt="Куртка Dainese Avro 4">
+                    <h3>Куртка Dainese Avro 4</h3>
+                    <p>Куртка премиум-класса для спорта и туризма</p>
+                    <p><strong>Цена:</strong> $600</p>
+                    <a href="#" class="buy-btn">Купить</a>
                 </div>
             </div>
         </section>
