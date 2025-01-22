@@ -52,66 +52,17 @@
         <section class="products">
             <h2>Наши мотоциклы</h2>
             <div class="product-grid">
-                <!-- Изменённые модели с ценами в долларах -->
-                <div class="product-item">
-                    <img src="{% static 'images/ducati_panigale.jpg' %}" width="270" alt="Ducati Panigale V4">
-                    <h3>Ducati Panigale V4</h3>
-                    <p>Идеален для треков и дорог</p>
-                    <p><strong>Цена:</strong> $29,000</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <div class="product-item">
-                    <img src="{% static 'images/kawasaki_ninja.jpg' %}" width="270" alt="Kawasaki Ninja ZX-10R">
-                    <h3>Kawasaki Ninja ZX-10R</h3>
-                    <p>Для экстремальных скоростей</p>
-                    <p><strong>Цена:</strong> $24,000</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <div class="product-item">
-                    <img src="{% static 'images/bmw_s1000rr.jpg' %}" width="270" alt="BMW S1000RR">
-                    <h3>BMW S1000RR</h3>
-                    <p>Скорость и элегантность</p>
-                    <p><strong>Цена:</strong> $27,000</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <!-- Новые модели с ценами в долларах -->
-                <div class="product-item">
-                    <img src="{% static 'images/harley_davidson.jpg' %}" width="270" alt="Harley-Davidson Street Glide">
-                    <h3>Harley-Davidson Street Glide</h3>
-                    <p>Для дальних путешествий</p>
-                    <p><strong>Цена:</strong> $38,000</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <div class="product-item">
-                    <img src="{% static 'images/ktm_1290.jpg' %}" width="270" alt="KTM 1290 Super Duke R">
-                    <h3>KTM 1290 Super Duke R</h3>
-                    <p>Мощность и манёвренность</p>
-                    <p><strong>Цена:</strong> $22,000</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <div class="product-item">
-                    <img src="{% static 'images/honda_goldwing.jpg' %}" width="270" alt="Honda Gold Wing">
-                    <h3>Honda Gold Wing</h3>
-                    <p>Комфорт и надёжность</p>
-                    <p><strong>Цена:</strong> $45,000</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <!-- Новый эндуро мотоцикл -->
-                <div class="product-item">
-                    <img src="{% static 'images/ktm_450_exc.jpg' %}" width="270" alt="KTM 450 EXC">
-                    <h3>KTM 450 EXC</h3>
-                    <p>Эндуро для всех условий</p>
-                    <p><strong>Цена:</strong> $12,000</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <!-- Новый спортивный мотоцикл -->
-                <div class="product-item">
-                    <img src="{% static 'images/suzuki_gsxr1000.jpg' %}" width="270" alt="Suzuki GSX-R1000"
-                    <h3>Suzuki GSX-R1000</h3>
-                    <p>Скорость и агрессивный дизайн</p>
-                    <p><strong>Цена:</strong> $16,000</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
+                {% for product in products %}
+                    <div class="product-item">
+                        <img src="{{ product.image.url }}" width="270" alt="{{ product.name }}">
+                        <h3>{{ product.name }}</h3>
+                        <p>{{ product.description }}</p>
+                        <p><strong>Цена:</strong> ${{ product.price }}</p>
+                        <a href="#" class="buy-btn">Купить</a>
+                    </div>
+                {% empty %}
+                    <p>Нет товаров в наличии.</p>
+                {% endfor %}
             </div>
         </section>
     </main>

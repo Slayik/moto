@@ -1,12 +1,12 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мотоциклы - Интернет-магазин</title>
+    <title>Мотоциклы под заказ - Интернет-магазин</title>
 </head>
 <body>
     <header>
@@ -27,56 +27,28 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h1>МОТОЦИКЛЫ</h1>
-                <p>Под заказ</p>
-            </div>
-        </section>
-        <section class="filters">
-            <h2>Фильтры</h2>
-            <div class="filter-options">
-                <label>Цвет:
-                    <select>
-                        <option>Красный</option>
-                        <option>Черный</option>
-                        <option>Синий</option>
-                    </select>
-                </label>
-                <label>Модель:
-                    <select>
-                        <option>Street</option>
-                        <option>Sport</option>
-                    </select>
-                </label>
+                <h1>Мотоциклы под заказ</h1>
+                <p>Выберите и закажите мотоцикл своей мечты!</p>
             </div>
         </section>
         <section class="products">
-            <h2>Мотоциклы под заказ</h2>
+            <h2>Доступные мотоциклы</h2>
             <div class="product-grid">
-                <div class="product-item">
-                    <img src="{% static 'images/bike1.jpg' %}" width="270" height="auto;">
-                    <h3>Honda CB1000R</h3>
-                    <p>Стильный и мощный</p>
-                    <a href="#" class="buy-btn">Заказать</a>
-                </div>
-                <div class="product-item">
-                    <img src="{% static 'images/bike2.jpg' %}" width="270" height="auto;">
-                    <h3>Honda Shadow 1100</h3>
-                    <p>Скорость и комфорт</p>
-                    <a href="#" class="buy-btn">Заказать</a>
-                </div>
-                <div class="product-item">
-                    <img src="{% static 'images/bike3.jpg' %}" width="270" height="auto;">
-                    <h3>Yamaha R1</h3>
-                    <p>Для настоящих гонщиков</p>
-                    <a href="#" class="buy-btn">Заказать</a>
-                </div>
-                <!-- Новый мотоцикл под заказ -->
-                <div class="product-item">
-                    <img src="{% static 'images/bike4.jpg' %}" width="270" height="auto;">
-                    <h3>BMW R1250 GS</h3>
-                    <p>Для приключений и дальних путешествий</p>
-                    <a href="#" class="buy-btn">Заказать</a>
-                </div>
+                {% for moto in moto_to_order %}
+                    <div class="product-item">
+                        {% if moto.image %}
+                            <img src="{{ moto.image.url }}" width="270" alt="{{ moto.name }}">
+                        {% else %}
+                            <img src="{% static 'images/default.jpg' %}" width="270" alt="Изображение недоступно">
+                        {% endif %}
+                        <h3>{{ moto.name }}</h3>
+                        <p>{{ moto.description }}</p>
+                        <p><strong>Цена:</strong> ${{ moto.price }}</p>
+                        <a href="#" class="buy-btn">Заказать</a>
+                    </div>
+                {% empty %}
+                    <p>К сожалению, в данный момент нет мотоциклов под заказ.</p>
+                {% endfor %}
             </div>
         </section>
     </main>

@@ -1,8 +1,8 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,77 +34,17 @@
         <section class="products">
             <h2>Экипировка</h2>
             <div class="product-grid">
-                <!-- Предметы экипировки -->
-                <div class="product-item">
-                    <img src="{% static 'images/helmet1.jpg' %}" width="270" alt="Шлем AGV K1">
-                    <h3>Шлем AGV K1</h3>
-                    <p>Спортивный шлем с отличной вентиляцией</p>
-                    <p><strong>Цена:</strong> $300</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <div class="product-item">
-                    <img src="{% static 'images/jacket1.jpg' %}" width="270" alt="Куртка Alpinestars">
-                    <h3>Куртка Alpinestars</h3>
-                    <p>Кожаная куртка с защитой плеч и спины</p>
-                    <p><strong>Цена:</strong> $450</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <div class="product-item">
-                    <img src="{% static 'images/gloves1.jpg' %}" width="270" alt="Перчатки Dainese">
-                    <h3>Перчатки Dainese</h3>
-                    <p>Карбоновая защита для максимальной безопасности</p>
-                    <p><strong>Цена:</strong> $120</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <div class="product-item">
-                    <img src="{% static 'images/boots1.jpg' %}" width="270" alt="Ботинки TCX">
-                    <h3>Ботинки TCX</h3>
-                    <p>Водонепроницаемые ботинки для туризма</p>
-                    <p><strong>Цена:</strong> $280</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <div class="product-item">
-                    <img src="{% static 'images/pants1.jpg' %}" width="270" alt="Штаны Revit">
-                    <h3>Штаны Revit</h3>
-                    <p>Кожаные штаны с защитой коленей</p>
-                    <p><strong>Цена:</strong> $350</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <div class="product-item">
-                    <img src="{% static 'images/helmet2.jpg' %}" width="270" alt="Шлем Shoei GT-Air 2">
-                    <h3>Шлем Shoei GT-Air 2</h3>
-                    <p>Аэродинамичный шлем для дальних поездок</p>
-                    <p><strong>Цена:</strong> $550</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <div class="product-item">
-                    <img src="{% static 'images/gloves2.jpg' %}" width="270" alt="Перчатки Alpinestars SP-2">
-                    <h3>Перчатки Alpinestars SP-2</h3>
-                    <p>Универсальные перчатки с защитой кисти</p>
-                    <p><strong>Цена:</strong> $150</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <div class="product-item">
-                    <img src="{% static 'images/backpack.jpg' %}" width="270" alt="Рюкзак Ogio">
-                    <h3>Рюкзак Ogio</h3>
-                    <p>Эргономичный рюкзак для мотоциклистов</p>
-                    <p><strong>Цена:</strong> $200</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <div class="product-item">
-                    <img src="{% static 'images/boots2.jpg' %}" width="270" alt="Ботинки Forma Adventure">
-                    <h3>Ботинки Forma Adventure</h3>
-                    <p>Прочные ботинки для эндуро</p>
-                    <p><strong>Цена:</strong> $320</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
-                <div class="product-item">
-                    <img src="{% static 'images/jacket2.jpg' %}" width="270" alt="Куртка Dainese Avro 4">
-                    <h3>Куртка Dainese Avro 4</h3>
-                    <p>Куртка премиум-класса для спорта и туризма</p>
-                    <p><strong>Цена:</strong> $600</p>
-                    <a href="#" class="buy-btn">Купить</a>
-                </div>
+                {% for item in equipment_items %}
+                    <div class="product-item">
+                        <img src="{{ item.image.url }}" width="270" alt="{{ item.name }}">
+                        <h3>{{ item.name }}</h3>
+                        <p>{{ item.description }}</p>
+                        <p><strong>Цена:</strong> ${{ item.price }}</p>
+                        <a href="#" class="buy-btn">Купить</a>
+                    </div>
+                {% empty %}
+                    <p>К сожалению, в данный момент нет доступной экипировки.</p>
+                {% endfor %}
             </div>
         </section>
     </main>
