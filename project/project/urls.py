@@ -19,6 +19,7 @@ urlpatterns = [
     
     # Подключаем маршруты из приложения products (если нужно использовать другие страницы или API)
     path('products/', include('products.urls')),
+    path('comments/', include('comments.urls')),
 ]
 
 if settings.DEBUG:

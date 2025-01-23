@@ -2,19 +2,24 @@ from django.shortcuts import render, redirect
 from .models import Comment
 from .forms import CommentForm
 
-def post_detail(request, post_id):
-    # Предположим, что у вас есть модель Post
-    post = get_object_or_404(Post, id=post_id)
-    comments = Comment.objects.filter(post=post, active=True)
+def page_detail(request, page_title):
+    # Получаем все активные комментарии для данной страницы
+    comments = Comment.objects.filter(page_title=page_title, active=True)
+    new_comment = None
 
     if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.post = post
-            comment.save()
-            return redirect('post_detail', post_id=post.id)
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.page_title = page_title  # Устанавливаем название страницы
+            new_comment.save()
+            return redirect('page_detail', page_title=page_title)
     else:
-        form = CommentForm()
+        comment_form = CommentForm()
 
-    return render(request, 'post_detail.html', {'post': post, 'comments': comments, 'form': form})
+    return render(request, 'page_detail.html', {
+        'page_title': page_title,
+        'comments': comments,
+        'new_comment': new_comment,
+        'comment_form': comment_form,
+    })
