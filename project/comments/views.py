@@ -17,7 +17,7 @@ def page_detail(request, page_title):
     else:
         comment_form = CommentForm()
 
-    return render(request, 'page_detail.html', {
+    return render(request, 'comments.html', {
         'page_title': page_title,
         'comments': comments,
         'new_comment': new_comment,

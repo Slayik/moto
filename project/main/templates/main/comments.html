@@ -41,16 +41,29 @@
             {% empty %}
                 <p>Пока нет отзывов.</p>
             {% endfor %}
-        </section>
+            <button id="showFormButton">Открыть форму</button>
 
-        <section class="add-comment">
-            <h2>Оставить отзыв</h2>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Отправить</button>
-            </form>
-        </section>
+<section class="add-comment" id="commentForm" style="display: none;">
+    <h2>Оставить отзыв</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
+</section>
+
+<script>
+    document.getElementById('showFormButton').addEventListener('click', function() {
+        var form = document.getElementById('commentForm');
+        if (form.style.display === 'none' || form.style.display === '') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    });
+</script>
+
+            
     </main>
     <footer>
         <p>&copy; 2025 Motoshop</p>
