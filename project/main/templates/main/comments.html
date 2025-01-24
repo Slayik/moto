@@ -38,11 +38,11 @@
                 <p>Пока нет отзывов.</p>
             {% endfor %}
         </section>
-
+        <h2>Оставить отзыв</h2>
         <button id="showFormButton">Открыть форму</button>
 
         <section class="add-comment" id="commentForm" style="display: none;">
-            <h2>Оставить отзыв</h2>
+            
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
