@@ -9,4 +9,3 @@ _pycache_/
 
 #django stuff
 db.sqlite3
-media/
