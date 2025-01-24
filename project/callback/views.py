@@ -1,16 +1,15 @@
-from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.views.decorators.csrf import csrf_protect
+from django.http import JsonResponse
 from .models import CallbackRequest
-from django.contrib import messages  # для уведомлений пользователю
 
+@csrf_protect  # Оставляем, если вам нужно защитить только это представление
 def callback_request_view(request):
-    if request.method == 'POST':
-        # Получаем данные из формы
+    if request.method == 'POST' and request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         name = request.POST.get('name')
         phone_number = request.POST.get('phone_number')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
-        
+        email = request.POST.get('email', '')
+        message = request.POST.get('message', '')
+
         # Сохраняем данные в модель
         CallbackRequest.objects.create(
             name=name,
@@ -18,8 +17,7 @@ def callback_request_view(request):
             email=email,
             message=message
         )
-        # Уведомление об успешной отправке
-        messages.success(request, 'Ваш запрос успешно отправлен! Мы свяжемся с вами в ближайшее время.')
-        return redirect(reverse('callback_form'))  # возвращаемся на страницу формы
 
-    return render(request, 'callback_form.html')  # шаблон для формы
+        return JsonResponse({'success': True, 'message': 'Ваш запрос успешно отправлен!'})
+
+    return JsonResponse({'success': False, 'message': 'Ошибка отправки формы.'})

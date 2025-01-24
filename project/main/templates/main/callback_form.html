@@ -1,0 +1,61 @@
+<!-- Модальное окно для обратного звонка -->
+<div class="modal fade" id="callbackModal" tabindex="-1" aria-labelledby="callbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="callbackModalLabel">Запрос на обратный звонок</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <div class="modal-body">
+                <form id="callbackForm" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Ваше имя:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Ваш телефон:</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Сообщение:</label>
+                        <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Подключаем JavaScript для отправки формы через AJAX -->
+<script>
+    document.getElementById('callbackForm').addEventListener('submit', function(event) {
+        event.preventDefault();  // Отменяем стандартное отправление формы
+
+        // Получаем CSRF токен
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        const formData = new FormData(this);
+        const csrfHeader = new Headers();
+        csrfHeader.append("X-CSRFToken", csrfToken);
+
+        // Отправляем данные с помощью fetch
+        fetch('{% url "callback_request_view" %}', {
+            method: 'POST',
+            body: formData,
+            headers: csrfHeader
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                // Закрытие модального окна после успешной отправки
+                $('#callbackModal').modal('hide');
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => console.error('Ошибка:', error));
+    });
+</script>

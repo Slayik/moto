@@ -6,35 +6,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мотоциклы - Интернет-магазин</title>
+
+    <!-- Подключаем Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Подключаем свой CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="{% url 'index' %}">Главная</a></li>
-                <li><a href="{% url 'in_stock' %}">Мото в наличии</a></li>
-                <li><a href="{% url 'to_order' %}">Мото под заказ</a></li>
-                <li><a href="{% url 'equip' %}">Мотоэкипировка</a></li>
-                <li><a href="#">Обратный звонок</a></li>
-                <li><a href="{% url 'about' %}">О компании</a></li>
-                <li><a href="{% url 'contacts' %}">Контакты</a></li>
-                <li><a href="{% url 'comments' %}">Отзывы</a></li>
-            </ul>
-            <a href="#" class="buy-btn">Войти</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{% url 'index' %}">Motoshop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'in_stock' %}">Мото в наличии</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'to_order' %}">Мото под заказ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'equip' %}">Мотоэкипировка</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#callbackModal">Обратный звонок</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">О компании</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contacts' %}">Контакты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'comments' %}">Отзывы</a></li>
+                </ul>
+            </div>
+            <a href="#" class="btn btn-outline-light">Войти</a>
         </nav>
     </header>
     <main>
-        <section class="hero">
+        <section class="hero bg-dark text-white text-center py-5">
             <div class="hero-content">
                 <h1>МОТОЦИКЛЫ</h1>
                 <p>В наличии и под заказ</p>
-                <a href="#" class="buy-btn">Купить сейчас</a>
+                <a href="#" class="btn btn-danger">Купить сейчас</a>
             </div>
         </section>
-        <section class="about">
-            <section style="color: red; font-size: 24px;">
-            <h2>О нас</h2>
+        <section class="about container py-5">
+            <h2 class="text-danger">О нас</h2>
             <p>Добро пожаловать в нашу компанию! Мы специализируемся на продаже мотоциклов для истинных ценителей скорости, стиля и свободы.</p>
             <ul>
                 <li><strong>Мотоциклы в наличии:</strong> от классических моделей до современных спортивных байков, готовых к отправке уже сегодня.</li>
@@ -51,8 +61,78 @@
             <p><strong>Присоединяйтесь к сообществу мотоциклистов уже сегодня!</strong></p>
         </section>
     </main>
-    <footer>
+
+    <!-- Модальное окно для обратного звонка -->
+    <div class="modal fade" id="callbackModal" tabindex="-1" aria-labelledby="callbackModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="callbackModalLabel">Запрос на обратный звонок</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="callbackForm" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Ваше имя</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Ваш телефон</label>
+                            <input type="tel" class="form-control" id="phone" name="phone_number" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Сообщение</label>
+                            <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2025 Motoshop</p>
     </footer>
+
+    <!-- Подключаем Bootstrap JS и Popper.js для функционала -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <!-- Ваш скрипт для обработки формы -->
+    <script>
+        document.getElementById('callbackForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Отменяем стандартное отправление формы
+
+            // Получаем CSRF токен
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            // Собираем данные формы
+            const formData = new FormData(this);
+
+            // Заголовки для CSRF защиты
+            const headers = new Headers();
+            headers.append("X-CSRFToken", csrfToken);
+
+            // Отправка данных с помощью fetch
+            fetch("{% url 'callback_request_view' %}", {
+                method: "POST",
+                body: formData,
+                headers: headers
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    // Закрытие модального окна после успешной отправки
+                    $('#callbackModal').modal('hide');
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => console.error("Ошибка:", error));
+        });
+    </script>
 </body>
 </html>
