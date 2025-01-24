@@ -6,7 +6,7 @@
     <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ post.title }} - Интернет-магазин</title>
+    <title>Отзывы - Интернет-магазин</title>
 </head>
 <body>
     <header>
@@ -24,14 +24,10 @@
             <a href="#" class="buy-btn">Войти</a>
         </nav>
     </header>
-    <main>
-        <section class="post-detail">
-            <h1>{{ post.title }}</h1>
-            <p>{{ post.content }}</p>
-        </section>
 
+    <main>
         <section class="comments">
-            <h2>Отзывы</h2>
+            <h1>Отзывы</h1>
             {% for comment in comments %}
                 <div class="comment">
                     <p><strong>{{ comment.name }}</strong> ({{ comment.email }})</p>
@@ -41,32 +37,33 @@
             {% empty %}
                 <p>Пока нет отзывов.</p>
             {% endfor %}
-            <button id="showFormButton">Открыть форму</button>
+        </section>
 
-<section class="add-comment" id="commentForm" style="display: none;">
-    <h2>Оставить отзыв</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Отправить</button>
-    </form>
-</section>
+        <button id="showFormButton">Открыть форму</button>
 
-<script>
-    document.getElementById('showFormButton').addEventListener('click', function() {
-        var form = document.getElementById('commentForm');
-        if (form.style.display === 'none' || form.style.display === '') {
-            form.style.display = 'block';
-        } else {
-            form.style.display = 'none';
-        }
-    });
-</script>
-
-            
+        <section class="add-comment" id="commentForm" style="display: none;">
+            <h2>Оставить отзыв</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
     </main>
+
     <footer>
         <p>&copy; 2025 Motoshop</p>
     </footer>
+
+    <script>
+        document.getElementById('showFormButton').addEventListener('click', function() {
+            var form = document.getElementById('commentForm');
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>

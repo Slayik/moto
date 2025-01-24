@@ -1,25 +1,21 @@
 from django.shortcuts import render, redirect
-from .models import Comment
 from .forms import CommentForm
+from .models import Comment
 
-def page_detail(request, page_title):
-    # Получаем все активные комментарии для данной страницы
-    comments = Comment.objects.filter(page_title=page_title, active=True)
-    new_comment = None
+def comments_page(request):
+    # Получаем все комментарии
+    comments = Comment.objects.all()
 
+    # Обрабатываем форму
     if request.method == 'POST':
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            new_comment = comment_form.save(commit=False)
-            new_comment.page_title = page_title  # Устанавливаем название страницы
-            new_comment.save()
-            return redirect('page_detail', page_title=page_title)
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()  # Сохраняем новый комментарий
+            return redirect('comments')  # Перенаправляем на ту же страницу
     else:
-        comment_form = CommentForm()
+        form = CommentForm()
 
-    return render(request, 'comments.html', {
-        'page_title': page_title,
+    return render(request, 'main/comments.html', {
         'comments': comments,
-        'new_comment': new_comment,
-        'comment_form': comment_form,
+        'form': form,
     })
