@@ -29,24 +29,31 @@
         <section class="comments">
             <h1>Отзывы</h1>
             {% for comment in comments %}
-                <div class="comment">
-                    <p><strong>{{ comment.name }}</strong> ({{ comment.email }})</p>
-                    <p>{{ comment.text }}</p>
-                    <p><em>{{ comment.created_at }}</em></p>
+                <div class="comment" style="margin-bottom: 20px; padding: 10px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 5px;">
+                    <p style="font-size: 1.2rem; margin-bottom: 5px;">
+                        <strong>{{ comment.name }}</strong> 
+                        <span style="font-size: 1rem; color: rgba(255, 255, 255, 0.7);">({{ comment.email }})</span>
+                    </p>
+                    <p style="font-size: 1rem; line-height: 1.5; margin-bottom: 5px;">
+                        {{ comment.text }}
+                    </p>
+                    <p style="font-size: 0.9rem; font-style: italic; color: rgba(255, 255, 255, 0.6);">
+                        {{ comment.created_at }}
+                    </p>
                 </div>
             {% empty %}
                 <p>Пока нет отзывов.</p>
             {% endfor %}
         </section>
+
         <h2>Оставить отзыв</h2>
         <button id="showFormButton">Открыть форму</button>
 
         <section class="add-comment" id="commentForm" style="display: none;">
-            
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit">Отправить</button>
+                <button type="submit" class="buy-btn">Отправить</button>
             </form>
         </section>
     </main>
