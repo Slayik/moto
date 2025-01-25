@@ -147,3 +147,51 @@ input:focus, textarea:focus {
     outline: none;
     border-color: #ffcf48; /* Цвет рамки при фокусе */
 }
+
+/* Общий фон для модального окна */
+.modal-content {
+    background-color: #222; /* Темный фон, аналогичный остальной форме */
+    color: white; /* Белый цвет текста */
+    border-radius: 10px; /* Скругленные углы */
+}
+
+/* Фон для заголовка модального окна */
+.modal-header {
+    background-color: #333; /* Темно-серый фон для заголовка */
+    border-bottom: 1px solid #444;
+}
+
+/* Фон для тела модального окна */
+.modal-body {
+    background-color: #333; /* Темно-серый фон для тела */
+}
+
+/* Стили для формы */
+.modal-body .form-label {
+    color: white; /* Белый цвет для текста метки */
+}
+
+.modal-body input, .modal-body textarea {
+    background-color: #444; /* Темный фон для полей ввода */
+    color: white;
+    border: 1px solid #666;
+}
+
+.modal-body input:focus, .modal-body textarea:focus {
+    outline: none;
+    border-color: #ffcf48; /* Подсветка при фокусе */
+}
+
+/* Кнопка отправки */
+button[type="submit"] {
+    background-color: #ffcf48; /* Желтая кнопка */
+    border: none;
+    color: #222;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button[type="submit"]:hover {
+    background-color: #e60000; /* Красный цвет при наведении */
+}
