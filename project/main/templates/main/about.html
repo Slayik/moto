@@ -26,6 +26,7 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'in_stock' %}">Мото в наличии</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'to_order' %}">Мото под заказ</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'equip' %}">Мотоэкипировка</a></li>
+                    <!-- Кнопка для открытия модального окна -->
                     <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#callbackModal">Обратный звонок</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">О компании</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'contacts' %}">Контакты</a></li>
@@ -35,6 +36,7 @@
             <a href="#" class="btn btn-outline-light" style="font-size: 16px;">Войти</a>
         </nav>
     </header>
+
     <main>
         <section class="hero text-white text-center py-5" style="background: rgba(0, 0, 0, 0.7);">
             <div class="hero-content">
@@ -62,36 +64,9 @@
         </section>
     </main>
 
-    <!-- Модальное окно для обратного звонка -->
-    <div class="modal fade" id="callbackModal" tabindex="-1" aria-labelledby="callbackModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="callbackModalLabel">Запрос на обратный звонок</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="callbackForm" method="POST">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Ваше имя</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Ваш телефон</label>
-                            <input type="tel" class="form-control" id="phone" name="phone_number" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Сообщение</label>
-                            <textarea class="form-control" id="message" name="message" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Отправить</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <!-- Подключаем форму обратного звонка -->
+    {% include 'main/callback_form.html' %}
+    
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2025 Motoshop</p>
     </footer>
@@ -100,39 +75,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
-    <!-- Ваш скрипт для обработки формы -->
-    <script>
-        document.getElementById('callbackForm').addEventListener('submit', function(event) {
-            event.preventDefault();  // Отменяем стандартное отправление формы
-
-            // Получаем CSRF токен
-            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-
-            // Собираем данные формы
-            const formData = new FormData(this);
-
-            // Заголовки для CSRF защиты
-            const headers = new Headers();
-            headers.append("X-CSRFToken", csrfToken);
-
-            // Отправка данных с помощью fetch
-            fetch("{% url 'callback_request_view' %}", {
-                method: "POST",
-                body: formData,
-                headers: headers
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert(data.message);
-                    // Закрытие модального окна после успешной отправки
-                    $('#callbackModal').modal('hide');
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(error => console.error("Ошибка:", error));
-        });
-    </script>
+    <!-- Подключаем внешний файл callback.js -->
+    <script src="{% static 'js/callback.js' %}"></script>
 </body>
 </html>

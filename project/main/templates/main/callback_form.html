@@ -1,93 +1,31 @@
+<!-- callback_modal.html -->
 {% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мотоциклы - Интернет-магазин</title>
-
-    <!-- Подключаем Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Подключаем свой CSS -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="{% url 'index' %}">Motoshop</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Главная</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'in_stock' %}">Мото в наличии</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'to_order' %}">Мото под заказ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'equip' %}">Мотоэкипировка</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#callbackModal">Обратный звонок</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">О компании</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'contacts' %}">Контакты</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'comments' %}">Отзывы</a></li>
-                </ul>
+<!-- Модальное окно -->
+<div class="modal fade" id="callbackModal" tabindex="-1" aria-labelledby="callbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="callbackModalLabel">Запрос на обратный звонок</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
             </div>
-            <a href="#" class="btn btn-outline-light">Войти</a>
-        </nav>
-    </header>
-    <main>
-        <section class="hero text-white text-center py-5 bg-dark">
-            <div class="hero-content">
-                <h1>МОТОЦИКЛЫ</h1>
-                <p>В наличии и под заказ</p>
-                <a href="#" class="btn btn-danger">Купить сейчас</a>
-            </div>
-        </section>
-        <section class="about container py-5">
-            <h2 class="text-danger">О нас</h2>
-            <p>Добро пожаловать в нашу компанию! Мы предлагаем широкий выбор мотоциклов и аксессуаров для любителей скорости и свободы.</p>
-        </section>
-    </main>
-
-    <!-- Модальное окно -->
-    <div class="modal fade" id="callbackModal" tabindex="-1" aria-labelledby="callbackModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="callbackModalLabel">Запрос на обратный звонок</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="callbackForm" method="POST">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Ваше имя:</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="phone_number" class="form-label">Ваш телефон:</label>
-                            <input type="tel" class="form-control" id="phone_number" name="phone_number" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Ваш email (необязательно):</label>
-                            <input type="email" class="form-control" id="email" name="email">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Сообщение:</label>
-                            <textarea class="form-control" id="message" name="message" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Отправить</button>
-                    </form>
-                </div>
+            <div class="modal-body">
+                <form id="callbackForm" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Ваше имя</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Ваш телефон</label>
+                        <input type="tel" class="form-control" id="phone" name="phone_number" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Сообщение</label>
+                        <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
             </div>
         </div>
     </div>
-
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2025 Motoshop</p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-</body>
-</html>
+</div>
