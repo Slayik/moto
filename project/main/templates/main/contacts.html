@@ -27,8 +27,8 @@
     <main>
         <section class="contacts">
             <div class="contacts-content">
-                <h1>Контакты</h1>
-                <p>Свяжитесь с нами любым удобным способом:</p>
+                <h1 class="contacts-title">Контакты</h1>
+                <p class="contacts-description">Свяжитесь с нами любым удобным способом:</p>
                 <ul class="contact-info">
                     <li><strong>Телефон:</strong> <a href="tel:+375299999999" class="contact-link">+375 (29) 999-99-99</a></li>
                     <li><strong>Email:</strong> <a href="mailto:info@motoshop.ru" class="contact-link">info@motoshop.by</a></li>
@@ -42,6 +42,77 @@
                 </div>
             </div>
         </section>
+        
+        <style>
+            /* Общие стили для секции */
+            .contacts {
+                padding: 40px;
+                background: none;  /* Убираем фон */
+                font-family: Arial, sans-serif;
+            }
+        
+            .contacts-content {
+                max-width: 800px;
+                margin: 0 auto;
+                text-align: center;
+            }
+        
+            /* Заголовок секции */
+            .contacts-title {
+                font-size: 36px;
+                color: white;  /* Белый цвет текста */
+                margin-bottom: 20px;
+            }
+        
+            /* Описание */
+            .contacts-description {
+                font-size: 20px;
+                color: white;  /* Белый цвет текста */
+                margin-bottom: 30px;
+            }
+        
+            /* Список контактной информации */
+            .contact-info {
+                list-style: none;
+                padding: 0;
+                font-size: 18px;
+                line-height: 1.6;
+                color: white;  /* Белый цвет текста */
+            }
+        
+            .contact-info li {
+                margin-bottom: 15px;
+            }
+        
+            /* Ссылки на контакты */
+            .contact-link {
+                color: #007bff;
+                text-decoration: none;
+            }
+        
+            .contact-link:hover {
+                text-decoration: underline;
+            }
+        
+            /* Социальные ссылки */
+            .social-links {
+                margin-top: 30px;
+            }
+        
+            .social-link {
+                color: #007bff;
+                text-decoration: none;
+                font-size: 18px;
+            }
+        
+            .social-link:hover {
+                text-decoration: underline;
+            }
+        </style>
+        
+        
+     
+        
     </main>
     <footer>
         <p>&copy; 2025 Motoshop. Все права защищены.</p>
