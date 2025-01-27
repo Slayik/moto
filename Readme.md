@@ -29,6 +29,10 @@
 - pillow==11.1.0
 - sqlparse==0.5.3
 - tzdata==2024.2
+- colorama==0.4.6
+- iniconfig==2.0.0
+- packaging==24.2
+- pytest==8.3.4
 ---
 
 ## Установка и запуск
