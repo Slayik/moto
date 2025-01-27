@@ -1,20 +1,76 @@
 import pytest
 from django.urls import reverse
-from moto.models import Motorcycle
-from moto.forms import MotorcycleForm
+from django.utils import timezone
+from callback.models import CallbackRequest 
+from comments.models import Comment
+from products.models import MotoInStock, MotoToOrder, Equipments
 
-# === Тесты моделей ===
+
+
+#Тесты моделей
+# === Тесты модели CallbackRequest ===
 @pytest.mark.django_db
-def test_motorcycle_creation():
-    bike = Motorcycle.objects.create(
-        name="Kawasaki Ninja",
-        price=15000,
-        available=True
+def test_callback_request_creation():
+    callback = CallbackRequest.objects.create(
+        name="John Doe",
+        phone_number="1234567890",
+        message="I am interested in a motorcycle",
+        created_at=timezone.now()
     )
-    assert bike.name == "Kawasaki Ninja"
-    assert bike.price == 15000
-    assert bike.available is True
+    assert callback.name == "John Doe"
+    assert callback.phone_number == "1234567890"
+    assert callback.message == "I am interested in a motorcycle"
+    assert callback.created_at is not None
 
+# === Тесты модели Comment ===
+@pytest.mark.django_db
+def test_comment_creation():
+    comment = Comment.objects.create(
+        name="Jane Doe",
+        email="jane.doe@example.com",
+        text="Great service!",
+        created_at=timezone.now()
+    )
+    assert comment.name == "Jane Doe"
+    assert comment.email == "jane.doe@example.com"
+    assert comment.text == "Great service!"
+    assert comment.created_at is not None
+
+# === Тесты модели MotoInStock ===
+@pytest.mark.django_db
+def test_moto_in_stock_creation():
+    moto = MotoInStock.objects.create(
+        name="Yamaha R1",
+        description="Sport motorcycle",
+        price=15000.00,
+    )
+    assert moto.name == "Yamaha R1"
+    assert moto.description == "Sport motorcycle"
+    assert moto.price == 15000.00
+
+# === Тесты модели MotoToOrder ===
+@pytest.mark.django_db
+def test_moto_to_order_creation():
+    moto_order = MotoToOrder.objects.create(
+        name="Harley Davidson",
+        description="Cruiser motorcycle",
+        price=20000.00,
+    )
+    assert moto_order.name == "Harley Davidson"
+    assert moto_order.description == "Cruiser motorcycle"
+    assert moto_order.price == 20000.00
+
+# === Тесты модели Equipments ===
+@pytest.mark.django_db
+def test_equipment_creation():
+    equipment = Equipments.objects.create(
+        name="Helmet",
+        description="Safety gear",
+        price=200.00,
+    )
+    assert equipment.name == "Helmet"
+    assert equipment.description == "Safety gear"
+    assert equipment.price == 200.00
 
 # === Тесты URL-адресов ===
 def test_homepage_url(client):
