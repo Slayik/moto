@@ -30,3 +30,30 @@
 - sqlparse==0.5.3
 - tzdata==2024.2
 ---
+
+## Установка и запуск
+
+1. Клонируйте репозиторий:
+
+   git clone https://github.com/Slayik/moto.git
+   cd moto
+   
+3. Создайте и активируйте виртуальное окружение:
+   python3 -m venv venv
+   venv/Scripts/activate
+   
+4. Установите зависимости:
+   pip install -r requirements.txt
+   
+5. Примените миграции базы данных:
+   python manage.py migrate
+   
+6. Перейдите в папку project
+   cd project
+   
+7. Запустите сервер разработки:
+   python manage.py runserver
+   
+8.Откройте браузер и перейдите по адресу http://127.0.0.1:8000/ для доступа к приложению.
+
+9. Введите http://127.0.0.1:8000/admin для доступа к админ панели.
