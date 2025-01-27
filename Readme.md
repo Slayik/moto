@@ -31,7 +31,7 @@
 1. Клонируйте репозиторий:
 
    git clone https://github.com/Slayik/moto.git
-   cd moto
+   И перейдите в папку moto  cd moto
    
 2. Создайте и активируйте виртуальное окружение:
    python3 -m venv venv
