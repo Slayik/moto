@@ -4,12 +4,11 @@
     <title>Вход</title>
 </head>
 <body>
-    <h2>Вход</h2>
+    <h1>Страница входа</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Войти</button>
     </form>
-    <a href="{% url 'register' %}">Нет аккаунта? Регистрация</a>
 </body>
 </html>
