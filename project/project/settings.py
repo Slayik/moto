@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'products',
     'comments',
     'callback',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +144,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CSRF_COOKIE_NAME = 'csrftoken'
 CSRF_COOKIE_HTTPONLY = True  # по умолчанию
 CSRF_USE_SESSIONS = False    # по умолчанию
+
+LOGIN_REDIRECT_URL = '/users/profile/'  # Куда перенаправлять после входа
+LOGOUT_REDIRECT_URL = '/users/login/'  # Куда перенаправлять после выхода

@@ -11,6 +11,7 @@ urlpatterns = [
     path('about/', main_views.about, name='about'),  # Страница "О нас"
     path('comments/', main_views.comments, name='comments'),  # Страница "Отзывы"
     path('contacts/', main_views.contacts, name='contacts'),  # Страница "Контакты"
+
     
     # Продукты и страницы из приложения products
     path('products/in_stock/', products_views.moto_in_stock_view, name='moto_in_stock'),
@@ -21,6 +22,11 @@ urlpatterns = [
     path('products/', include('products.urls')),
     path('comments/', include('comments.urls')),
     path('callback/', include('callback.urls')),
+
+    #Из приложения Users
+    #Настрока views
+    #Включаем все маршруты из файла users/urls.py
+    path('users/', include('users.urls')),
 ]
 
 if settings.DEBUG:
