@@ -35,7 +35,7 @@
    
 2. Создайте и активируйте виртуальное окружение:
    python3 -m venv venv
-   venv/Scripts/activate
+   .\venv\Scripts\activate
    
 3. Установите зависимости:
    pip install -r requirements.txt
