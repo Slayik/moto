@@ -15,7 +15,6 @@ def test_callback_request_creation():
         name="John Doe",
         phone_number="1234567890",
         message="I am interested in a motorcycle",
-        created_at=timezone.now()
     )
     assert callback.name == "John Doe"
     assert callback.phone_number == "1234567890"
@@ -72,11 +71,53 @@ def test_equipment_creation():
     assert equipment.description == "Safety gear"
     assert equipment.price == 200.00
 
+
 # === Тесты URL-адресов ===
-def test_homepage_url(client):
-    url = reverse('homepage')  # Замените 'homepage' на имя маршрута
-    response = client.get(url)
+
+#Тесты доступности URL
+@pytest.mark.django_db
+def test_callback_request_url(client):
+    response = client.get(reverse('index'))  # имя вашего URL
     assert response.status_code == 200
+
+@pytest.mark.django_db
+def test_callback_request_url(client):
+    response = client.get(reverse('in_stock'))  
+    assert response.status_code == 200
+
+@pytest.mark.django_db
+def test_callback_request_url(client):
+    response = client.get(reverse('to_order')) 
+    assert response.status_code == 200
+
+@pytest.mark.django_db
+def test_callback_request_url(client):
+    response = client.get(reverse('equip'))  
+    assert response.status_code == 200
+
+@pytest.mark.django_db
+def test_callback_request_url(client):
+    response = client.get(reverse('about')) 
+    assert response.status_code == 200
+
+@pytest.mark.django_db
+def test_callback_request_url(client):
+    response = client.get(reverse('contacts'))  
+    assert response.status_code == 200
+
+@pytest.mark.django_db
+def test_callback_request_url(client):
+    response = client.get(reverse('comments'))  
+    assert response.status_code == 200
+
+
+#Тест неправильного URL
+@pytest.mark.django_db
+def test_invalid_url(client):
+    response = client.get('/invalid-url/')  #несуществующий URL
+    assert response.status_code == 404
+
+
 
 
 # === Тесты представлений ===
