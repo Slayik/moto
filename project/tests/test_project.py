@@ -4,6 +4,10 @@ from django.utils import timezone
 from callback.models import CallbackRequest 
 from comments.models import Comment
 from products.models import MotoInStock, MotoToOrder, Equipments
+from comments.forms import CommentForm
+from django.contrib.auth.models import User
+from django.test import Client, TestCase
+
 
 
 
@@ -121,54 +125,105 @@ def test_invalid_url(client):
 
 
 # === Тесты представлений ===
+
+
 @pytest.mark.django_db
-def test_motorcycle_list_view(client):
-    url = reverse('motorcycle_list')  # Замените на имя маршрута
+def test_index_view(client):
+    url = reverse('index')  # Главная страница
     response = client.get(url)
     assert response.status_code == 200
-    assert 'motorcycle_list.html' in [t.name for t in response.templates]
+    assert 'main/index.html' in [t.name for t in response.templates]  
+
+@pytest.mark.django_db
+def test_about_view(client):
+    url = reverse('about')  # "О нас"
+    response = client.get(url)
+    assert response.status_code == 200
+    assert 'main/about.html' in [t.name for t in response.templates]  
+
+@pytest.mark.django_db
+def test_comments_view(client):
+    url = reverse('comments')  # "Отзывы"
+    response = client.get(url)
+    assert response.status_code == 200
+    assert 'main/comments.html' in [t.name for t in response.templates] 
+
+@pytest.mark.django_db
+def test_contacts_view(client):
+    url = reverse('contacts')  # "Контакты"
+    response = client.get(url)
+    assert response.status_code == 200
+    assert 'main/contacts.html' in [t.name for t in response.templates]  
+
 
 
 # === Тесты форм ===
-def test_valid_motorcycle_form():
-    form = MotorcycleForm(data={
-        'name': 'Yamaha R1',
-        'price': 20000,
-        'available': True
+def test_valid_comment_form():
+    form = CommentForm(data={
+        'name': 'Alex',
+        'email': '123qwe@gmail.com',
+        'text': 'This is a comment.'
     })
     assert form.is_valid()
 
-def test_invalid_motorcycle_form():
-    form = MotorcycleForm(data={
-        'name': '',  # Пустое имя
-        'price': -5000,  # Недопустимая цена
-        'available': True
-    })
-    assert not form.is_valid()
-    assert 'name' in form.errors
-    assert 'price' in form.errors
 
+    
 
 # === Тесты API (если используется DRF) ===
-@pytest.mark.django_db
-def test_get_motorcycles_api(client):
-    response = client.get('/api/motorcycles/')  # Замените на реальный URL
-    assert response.status_code == 200
-    assert isinstance(response.json(), list)
+#@pytest.mark.django_db
+#def test_get_motorcycles_api(client):
+   # response = client.get('/api/motorcycles/')  # Замените на реальный URL
+   # assert response.status_code == 200
+   # assert isinstance(response.json(), list)
 
 
 # === Тесты шаблонов ===
 def test_homepage_template_content(client):
-    url = reverse('homepage')  # Замените на имя маршрута
+    url = reverse('index')  # имя маршрута
     response = client.get(url)
     assert response.status_code == 200
-    assert 'МОТОЦИКЛЫ!' in response.content  # Замените на реальный текст
+    
+    content = response.content.decode('utf-8')  # Декодируем контент
+    print(content)  # Для отладки: выводим содержимое ответа
+    assert 'МОТОЦИКЛЫ' in content
 
 
 # === Тесты авторизации ===
-@pytest.mark.django_db
-def test_protected_view_redirect(client):
-    url = reverse('protected_view')  # Замените на защищённый маршрут
-    response = client.get(url)
-    assert response.status_code == 302  # Редирект на страницу логина
-    assert '/login/' in response.url
+
+
+class UserAuthTests(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='testpassword')
+
+    def test_login_view(self):
+        # Делаем POST-запрос к представлению входа
+        url = reverse('login')  # Используем имя маршрута для входа
+        response = self.client.post(url, {'username': 'testuser', 'password': 'testpassword'})
+
+        # Проверяем, что статус ответа 302 (перенаправление после успешного входа)
+        self.assertEqual(response.status_code, 302)
+
+        # Проверяем, что пользователь аутентифицирован
+        self.assertTrue(response.wsgi_request.user.is_authenticated)
+
+    def test_profile_view_authenticated(self):
+        # Аутентификация пользователя
+        self.client.login(username='testuser', password='testpassword')
+
+        # Делаем GET-запрос к представлению профиля
+        url = reverse('profile')  # Используем имя маршрута для профиля
+        response = self.client.get(url)
+
+        # Проверяем, что статус ответа 200 (успех)
+        self.assertEqual(response.status_code, 200)
+
+    def test_profile_view_unauthenticated(self):
+        # Делаем GET-запрос к представлению профиля без аутентификации
+        url = reverse('profile')  # Используем имя маршрута для профиля
+        response = self.client.get(url)
+
+        # Проверяем, что статус ответа 302 (перенаправление на страницу входа)
+        self.assertEqual(response.status_code, 302)
+
+
