@@ -162,7 +162,7 @@ def test_homepage_template_content(client):
     url = reverse('homepage')  # Замените на имя маршрута
     response = client.get(url)
     assert response.status_code == 200
-    assert b'Добро пожаловать!' in response.content  # Замените на реальный текст
+    assert 'МОТОЦИКЛЫ!' in response.content  # Замените на реальный текст
 
 
 # === Тесты авторизации ===
