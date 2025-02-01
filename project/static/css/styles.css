@@ -1,13 +1,17 @@
 /* Основные стили для body */
 body {
-    background-color: #111; /* Темный фон */
-    font-family: serif; /* Шрифт с засечками */
+    background-color: #111; /* Тёмный фон */
+    font-family: serif; /* Шрифт */
     background-image: url("/static/images/background.jpg"); /* Фоновое изображение */
     background-size: cover; /* Растягиваем изображение на весь экран */
     background-position: center; /* Центрируем изображение */
     background-repeat: no-repeat; /* Отключаем повторение */
+    background-attachment: fixed; /* Фиксируем фон для параллакс-эффекта */
     color: white; /* Белый цвет текста */
+    margin: 0;
+    padding: 0;
 }
+
 
 /* Стили для навигации в header */
 header nav {
