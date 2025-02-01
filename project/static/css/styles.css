@@ -1,201 +1,219 @@
+/* Основные стили для body */
 body {
-    background-color: #111;
-    font-family: serif;
-    background-image: url("/static/images/background.jpg");
-    background-size: cover;                          /* Растягиваем изображение на весь экран */
-    background-position: center;                     /* Центрируем изображение */
-    background-repeat: no-repeat;                    /* Отключаем повторение */
-    color: white;                                    /* Устанавливаем цвет текста */
+    background-color: #111; /* Темный фон */
+    font-family: serif; /* Шрифт с засечками */
+    background-image: url("/static/images/background.jpg"); /* Фоновое изображение */
+    background-size: cover; /* Растягиваем изображение на весь экран */
+    background-position: center; /* Центрируем изображение */
+    background-repeat: no-repeat; /* Отключаем повторение */
+    color: white; /* Белый цвет текста */
 }
 
+/* Стили для навигации в header */
 header nav {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5);  /* Полупрозрачный черный фон */
+    justify-content: space-between; /* Распределение элементов по ширине */
+    padding: 20px; /* Внутренние отступы */
+    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
 }
 
+/* Стили для списка (ul) */
 ul {
-    list-style: none;
+    list-style: none; /* Убираем маркеры списка */
     display: flex;
-    gap: 20px;
+    gap: 20px; /* Расстояние между элементами списка */
 }
 
+/* Стили для ссылок (a) */
 a {
-    font-size: 25px;
-    text-decoration: none;
-    color: white;
-
+    font-size: 25px; /* Размер шрифта */
+    text-decoration: none; /* Убираем подчеркивание */
+    color: white; /* Белый цвет текста */
 }
 
+/* Стили для ссылок при наведении */
 a:hover {
-    color: #ffcf48;  /* Желтый цвет при наведении */
+    color: #ffcf48; /* Желтый цвет при наведении */
 }
 
-
-
+/* Стили для секции hero */
 .hero {
-    padding: 50px 0;
-    background: rgba(0, 0, 0, 0); /* Прозрачный черный фон */
+    padding: 50px 0; /* Внутренние отступы */
+    background: rgba(0, 0, 0, 0); /* Прозрачный фон */
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    color: rgb(208, 45, 48);
-    text-align: center;
+    justify-content: center; /* Центрирование содержимого */
+    font-size: 40px; /* Размер шрифта */
+    color: rgb(208, 45, 48); /* Красный цвет текста */
+    text-align: center; /* Выравнивание текста по центру */
 }
 
+/* Стили для кнопки покупки */
 button.buy-btn {
-    background-color: #333;  /* Темно-серый фон */
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 20px;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    transform: scale(1);
+    background-color: #333; /* Темно-серый фон */
+    color: white; /* Белый цвет текста */
+    padding: 8px 15px; /* Внутренние отступы */
+    border: none; /* Убираем границу */
+    cursor: pointer; /* Курсор в виде указателя */
+    border-radius: 20px; /* Скругленные углы */
+    font-size: 16px; /* Размер шрифта */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Плавные переходы */
+    transform: scale(1); /* Масштаб по умолчанию */
 }
 
+/* Стили для кнопки покупки при наведении */
 button.buy-btn:hover {
-    background-color: #555;  /* Светлый темно-серый при наведении */
-    transform: scale(1.1);
+    background-color: #555; /* Светлый темно-серый при наведении */
+    transform: scale(1.1); /* Увеличение кнопки */
 }
 
-
+/* Стили для сетки товаров */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* адаптация разметки под ширину экрана */
-    gap: 77px;        /*отступ между карточками товара*/
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Адаптивная сетка */
+    gap: 77px; /* Расстояние между карточками */
+    padding: 20px; /* Внутренние отступы */
     justify-items: center; /* Выравнивание по центру */
 }
 
+/* Стили для карточки товара */
 .product-item {
-    background: #222;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    width: 100%;
-    max-width: 270px; /* Ограничиваем максимальную ширину карточки */
+    background: #222; /* Темный фон */
+    padding: 20px; /* Внутренние отступы */
+    border-radius: 10px; /* Скругленные углы */
+    text-align: center; /* Выравнивание текста по центру */
+    width: 100%; /* Ширина карточки */
+    max-width: 270px; /* Ограничение максимальной ширины */
 }
 
-
+/* Стили для изображения в карточке товара */
 .product-item img {
-    max-width: 100%; /* Изображения подгоняются по ширине */
-    height: auto;
+    max-width: 100%; /* Изображение подгоняется по ширине */
+    height: auto; /* Автоматическая высота */
 }
 
+/* Стили для заголовка в карточке товара */
 .product-item h3 {
-    font-size: 1.2rem;
-    margin: 10px 0;
+    font-size: 1.2rem; /* Размер шрифта */
+    margin: 10px 0; /* Внешние отступы */
 }
 
+/* Стили для текста в карточке товара */
 .product-item p {
-    font-size: 1rem;
-    margin-bottom: 15px;
+    font-size: 1rem; /* Размер шрифта */
+    margin-bottom: 15px; /* Внешний отступ снизу */
 }
 
+/* Стили для кнопки покупки в карточке товара */
 .product-item .buy-btn {
-    padding: 10px 20px;
-    background-color: red;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    padding: 10px 20px; /* Внутренние отступы */
+    background-color: red; /* Красный фон */
+    color: white; /* Белый цвет текста */
+    border: none; /* Убираем границу */
+    cursor: pointer; /* Курсор в виде указателя */
+    border-radius: 5px; /* Скругленные углы */
+    transition: background-color 0.3s ease; /* Плавный переход */
 }
 
+/* Стили для кнопки покупки при наведении */
 .product-item .buy-btn:hover {
-    background-color: #e60000;
+    background-color: #e60000; /* Темно-красный цвет при наведении */
 }
 
+/* Стили для секций */
 section {
-    margin: 20px 0;  /*убрать слипание контента*/
+    margin: 20px 0; /* Внешние отступы */
 }
 
-@media (max-width: 768px) {                /*адаптивность для мобильных устройств*/
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
     .product-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Адаптивная сетка */
     }
     header nav {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; /* Вертикальное расположение элементов */
+        align-items: center; /* Выравнивание по центру */
     }
     a {
-        font-size: 18px;
+        font-size: 18px; /* Уменьшение размера шрифта */
     }
 }
 
-
+/* Стили для меток (label) */
 label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    display: block; /* Блочное отображение */
+    font-weight: bold; /* Жирный шрифт */
+    margin-bottom: 5px; /* Внешний отступ снизу */
 }
 
+/* Стили для полей ввода и текстовых областей */
 input, textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    background-color: #222;
-    color: #fff;
-    border: 1px solid #444;
+    width: 100%; /* Ширина 100% */
+    padding: 8px; /* Внутренние отступы */
+    margin-bottom: 15px; /* Внешний отступ снизу */
+    background-color: #222; /* Темный фон */
+    color: #fff; /* Белый цвет текста */
+    border: 1px solid #444; /* Граница */
 }
 
+/* Стили для полей ввода и текстовых областей при фокусе */
 input:focus, textarea:focus {
-    outline: none;
-    border-color: #ffcf48; /* Цвет рамки при фокусе */
+    outline: none; /* Убираем стандартный контур */
+    border-color: #ffcf48; /* Желтая граница при фокусе */
 }
 
-/* Общий фон для модального окна */
+/* Стили для модального окна */
 .modal-content {
-    background-color: #222; /* Темный фон, аналогичный остальной форме */
+    background-color: #222; /* Темный фон */
     color: white; /* Белый цвет текста */
     border-radius: 10px; /* Скругленные углы */
 }
 
-/* Фон для заголовка модального окна */
+/* Стили для заголовка модального окна */
 .modal-header {
-    background-color: #333; /* Темно-серый фон для заголовка */
-    border-bottom: 1px solid #444;
+    background-color: #333; /* Темно-серый фон */
+    border-bottom: 1px solid #444; /* Граница снизу */
 }
 
-/* Фон для тела модального окна */
+/* Стили для тела модального окна */
 .modal-body {
-    background-color: #333; /* Темно-серый фон для тела */
+    background-color: #333; /* Темно-серый фон */
 }
 
-/* Стили для формы */
+/* Стили для меток в модальном окне */
 .modal-body .form-label {
-    color: white; /* Белый цвет для текста метки */
+    color: white; /* Белый цвет текста */
 }
 
+/* Стили для полей ввода и текстовых областей в модальном окне */
 .modal-body input, .modal-body textarea {
-    background-color: #444; /* Темный фон для полей ввода */
-    color: white;
-    border: 1px solid #666;
+    background-color: #444; /* Темный фон */
+    color: white; /* Белый цвет текста */
+    border: 1px solid #666; /* Граница */
 }
 
+/* Стили для полей ввода и текстовых областей при фокусе в модальном окне */
 .modal-body input:focus, .modal-body textarea:focus {
-    outline: none;
-    border-color: #ffcf48; /* Подсветка при фокусе */
+    outline: none; /* Убираем стандартный контур */
+    border-color: #ffcf48; /* Желтая граница при фокусе */
 }
 
-/* Кнопка отправки */
+/* Стили для кнопки отправки */
 button[type="submit"] {
-    background-color: #ffcf48; /* Желтая кнопка */
-    border: none;
-    color: #222;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
+    background-color: #ffcf48; /* Желтый фон */
+    border: none; /* Убираем границу */
+    color: #222; /* Темный цвет текста */
+    padding: 10px 20px; /* Внутренние отступы */
+    cursor: pointer; /* Курсор в виде указателя */
+    border-radius: 5px; /* Скругленные углы */
 }
 
+/* Стили для кнопки отправки при наведении */
 button[type="submit"]:hover {
-    background-color: #e60000; /* Красный цвет при наведении */
+    background-color: #e60000; /* Красный фон при наведении */
 }
 
+/* Стили для ссылок в навигации */
 .nav-link {
-    font-size: 1.5rem; /* Это пропорционально размеру основного шрифта */
+    font-size: 1.5rem; /* Размер шрифта */
 }
