@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Выход</title>
-</head>
-<body>
+{% extends 'main/base.html' %}
+
+{% block title %}Выход{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
     <h2>Вы вышли из системы</h2>
-    <a href="{% url 'login' %}">Войти снова</a>
-</body>
-</html>
+    <a href="{% url 'login' %}" class="btn btn-primary">Войти снова</a>
+</div>
+{% endblock %}
