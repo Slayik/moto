@@ -30,6 +30,6 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
-@login_required
+@login_required  # Только для авторизованных пользователей
 def profile_view(request):
     return render(request, 'users/profile.html')

@@ -24,8 +24,13 @@
                 <li><a href="{% url 'contacts' %}">Контакты</a></li> <!-- Ссылка на Контакты -->
                 <li><a href="{% url 'comments' %}">Отзывы</a></li> <!-- Ссылка на отзывы -->
                 
-            </ul>
-            <a href="{% url 'login' %}" class="buy-btn">Войти</a>  
+            </ul>  
+            <!-- Блок с кнопкой "Войти" или именем пользователя с ссылкой на личный -->
+    {% if user.is_authenticated %}
+    <a href="{% url 'profile' %}" class="buy-btn">{{ user.username }}</a>  <!-- Ссылка на личный кабинет -->
+{% else %}
+    <a href="{% url 'login' %}" class="buy-btn">Войти</a>  <!-- Кнопка "Войти" -->
+{% endif %}
         </nav>
     </header>
     <main>

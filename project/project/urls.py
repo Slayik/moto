@@ -13,12 +13,12 @@ urlpatterns = [
     path('contacts/', main_views.contacts, name='contacts'),  # Страница "Контакты"
 
     
-    # Продукты и страницы из приложения products
+    # Cтраницы из приложения products
     path('products/in_stock/', products_views.moto_in_stock_view, name='moto_in_stock'),
     path('products/to_order/', products_views.moto_to_order_view, name='moto_to_order'),
     path('products/equipments/', products_views.equipments_view, name='equipments'),
     
-    # Подключаем маршруты из приложения products (если нужно использовать другие страницы или API)
+    # Подключаем маршруты из приложения products 
     path('products/', include('products.urls')),
     path('comments/', include('comments.urls')),
     path('callback/', include('callback.urls')),
