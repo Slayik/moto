@@ -35,66 +35,7 @@
         </nav>
     </header>
     <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>МОТОЦИКЛЫ</h1>
-                <p>В наличии и под заказ</p>
-                <a href="{% url 'in_stock' %}" class="btn btn-danger" style="font-size: 0.7em;">Купить сейчас</a>
-            </div>
-        </section>
-        <section class="filters">
-            <h2>Фильтры</h2>
-            <div class="filter-options">
-                <label>Цвет:
-                    <select>
-                        <option>Красный</option>
-                        <option>Черный</option>
-                        <option>Синий</option>
-                    </select>
-                </label>
-                <label>Модель:
-                    <select>
-                        <option>Street</option>
-                        <option>Sport</option>
-                    </select>
-                </label>
-            </div>
-        </section>
-        <section class="products">
-            <h2></h2>
-            <div class="product-grid">
-                <div class="product-item">
-                    <img src="{% static 'images/bike1.jpg' %}" width="270" height="auto;">
-                    <h3>Honda CB1000R</h3>
-                    <p>Стильный и мощный</p>
-                    <a href="{% url 'to_order' %}" class="buy-btn">Заказать</a> <!-- Ссылка на 'to_order' -->
-                </div>
-                
-                <div class="product-item">
-                    <img src="{% static 'images/bike2.jpg' %}" width="270" height="auto;">
-                    <h3>Honda Shadow 1100</h3>
-                    <p>Скорость и комфорт</p>
-                    <a href="{% url 'to_order' %}" class="buy-btn">Заказать</a> <!-- Ссылка на 'to_order' -->
-                </div>
-                
-                <div class="product-item">
-                    <img src="{% static 'images/bike3.jpg' %}" width="270" height="auto;">
-                    <h3>Yamaha R1</h3>
-                    <p>Для настоящих гонщиков</p>
-                    <a href="{% url 'to_order' %}" class="buy-btn">Заказать</a> <!-- Ссылка на 'to_order' -->
-                </div>
-                
-                <div class="product-item">
-                    <img src="{% static 'images/bike4.jpg' %}" width="270" height="auto;">
-                    <h3>BMW R1250 GS</h3>
-                    <p>Для приключений и дальних путешествий</p>
-                    <a href="{% url 'to_order' %}" class="buy-btn">Заказать</a> <!-- Ссылка на 'to_order' -->
-                </div>
-                
-
-                </div>
-            </div>
-        </section>
+        
     </main>
     <!-- Подключаем форму обратного звонка -->
     {% include 'main/callback_form.html' %}
