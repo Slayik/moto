@@ -1,16 +1,27 @@
 /* Основные стили для body */
 body {
-    background-color: #111; /* Тёмный фон */
-    font-family: serif; /* Шрифт */
-    background-image: url("/static/images/background.jpg"); /* Фоновое изображение */
+    background-color: #111; /* Тёмный фон для всего тела страницы */
+    font-family: serif; /* Шрифт для текста страницы */
+    
+    /* Фоновое изображение */
+    background-image: url("/static/images/background.jpg"); /* Путь к фоновому изображению */
     background-size: cover; /* Растягиваем изображение на весь экран */
+    background-position: center; /* Центрируем изображение по вертикали и горизонтали */
+    background-repeat: no-repeat; /* Отключаем повторение изображения, чтобы оно не накладывалось */
+    background-attachment: fixed; /* Фиксируем фон, чтобы он не прокручивался при скролле (параллакс-эффект) */
+    
+    color: white; /* Белый цвет текста по умолчанию */
+    margin: 0; /* Убираем отступы вокруг тела страницы */
+    padding: 0; /* Убираем внутренние отступы */
+    
+    /* Добавление градиента поверх фона */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/static/images/background.jpg"); /* Градиент для затемнения фона и фон */
+    background-size: cover; /* Растягиваем фоновое изображение */
     background-position: center; /* Центрируем изображение */
-    background-repeat: no-repeat; /* Отключаем повторение */
-    background-attachment: fixed; /* Фиксируем фон для параллакс-эффекта */
-    color: white; /* Белый цвет текста */
-    margin: 0;
-    padding: 0;
+    background-attachment: fixed; /* Фиксируем фон, создавая параллакс-эффект */
 }
+
+
 
 
 /* Стили для навигации в header */
@@ -44,13 +55,14 @@ a:hover {
 /* Стили для секции hero */
 .hero {
     padding: 50px 0; /* Внутренние отступы */
-    background: rgba(0, 0, 0, 0); /* Прозрачный фон */
+    background: rgba(0, 0, 0, 0.0); /* Полупрозрачный фон для улучшения контраста */
     display: flex;
     align-items: center;
     justify-content: center; /* Центрирование содержимого */
     font-size: 40px; /* Размер шрифта */
-    color: rgb(208, 45, 48); /* Красный цвет текста */
+    color: rgb(255, 255, 255); /* Белый цвет текста для контраста */
     text-align: center; /* Выравнивание текста по центру */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* Тень для улучшения читаемости */
 }
 
 /* Стили для кнопки покупки */
@@ -261,3 +273,6 @@ footer p {
     margin: 0; /* Убираем отступы у параграфа */
 }
 
+.about_text {
+    font-size: 1.33em; /* размер текста раздела О нас */
+}
