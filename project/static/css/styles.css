@@ -19,6 +19,7 @@ header nav {
     justify-content: space-between; /* Распределение элементов по ширине */
     padding: 20px; /* Внутренние отступы */
     background: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
+    height: 80px; /* Автоматическая высота */
 }
 
 /* Стили для списка (ul) */
@@ -245,6 +246,8 @@ button[type="submit"]:hover {
 
 /* для лого */
 .menu-logo {
-    height: 50px; /* или нужный размер */
-    width: auto; /* для сохранения пропорций */
+    height: 90px; /* или нужный размер */
+    width: 150px; /* для сохранения пропорций */
+    transform: translateY(-25px); /* Поднимаем логотип на 10px вверх */
 }
+

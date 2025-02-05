@@ -14,7 +14,11 @@
     <header>
         <nav>
             <ul>
-                <li><a href="{% url 'index' %}">Главная</a></li>
+                <li>
+                    <a href="{% url 'index' %}">
+                        <img src="{% static 'images/logo.png' %}" alt="Главная" class="menu-logo">
+                    </a>
+                </li>        
                 <li><a href="{% url 'in_stock' %}">Мото в наличии</a></li>
                 <li><a href="{% url 'to_order' %}">Мото под заказ</a></li>
                 <li><a href="{% url 'equip' %}">Мотоэкипировка</a></li>
