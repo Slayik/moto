@@ -251,3 +251,13 @@ button[type="submit"]:hover {
     transform: translateY(-25px); /* Поднимаем логотип на 10px вверх */
 }
 
+footer {
+    text-align: right; /* Выравнивание текста по правому краю */
+    padding: 20px;
+    color: white;
+}
+
+footer p {
+    margin: 0; /* Убираем отступы у параграфа */
+}
+
