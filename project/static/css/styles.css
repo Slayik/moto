@@ -276,3 +276,19 @@ footer p {
 .about_text {
     font-size: 1.33em; /* размер текста раздела О нас */
 }
+
+/*Стили для кнопки корзины*/
+.cart-btn {
+    display: inline-block;
+    padding: 8px;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.cart-btn:hover {
+    background-color: #0056b3;
+}
+

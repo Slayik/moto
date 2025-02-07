@@ -27,6 +27,8 @@ urlpatterns = [
     #Настрока views
     #Включаем все маршруты из файла users/urls.py
     path('users/', include('users.urls')),
+    #из приложения заказы
+    path('orders/', include('orders.urls')),
 ]
 
 if settings.DEBUG:

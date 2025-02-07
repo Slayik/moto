@@ -1,12 +1,17 @@
+import random
 from django.shortcuts import render
+from products.models import MotoInStock, MotoToOrder
 
 # Главная страница
 def index(request):
-    context = {
-        'title': 'Home',
-        'content': 'Главная страница магазина'
-    }
-    return render(request, 'main/index.html', context)
+    # Получаем все товары из моделей
+    moto_to_order = list(MotoToOrder.objects.all())
+    moto_in_stock = list(MotoInStock.objects.all())
+
+    # Смешиваем товары и берем 4 случайных
+    random_motos = random.sample(moto_to_order + moto_in_stock, 4)
+
+    return render(request, 'main/index.html', {'random_motos': random_motos})
 
 # Страница О нас
 def about(request):

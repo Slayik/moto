@@ -6,6 +6,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <!-- Подключение Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,22 +22,19 @@
                         <img src="{% static 'images/logo.png' %}" alt="Главная" class="menu-logo">
                     </a>
                 </li>                
-                <li><a href="{% url 'in_stock' %}">Мото в наличии</a></li> <!-- Ссылка в наличии -->
-                <li><a href="{% url 'to_order' %}">Мото под заказ</a></li> <!-- Ссылка под заказ -->
-                <li><a href="{% url 'equip' %}">Мотоэкипировка</a></li> <!-- Ссылка на экипировку -->
-                <!-- Кнопка для открытия модального окна -->
+                <li><a href="{% url 'in_stock' %}">Мото в наличии</a></li>
+                <li><a href="{% url 'to_order' %}">Мото под заказ</a></li>
+                <li><a href="{% url 'equip' %}">Мотоэкипировка</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#callbackModal">Обратный звонок</a></li>
-                <li><a href="{% url 'about' %}">О компании</a></li> <!-- Ссылка о компании -->
-                <li><a href="{% url 'contacts' %}">Контакты</a></li> <!-- Ссылка на Контакты -->
-                <li><a href="{% url 'comments' %}">Отзывы</a></li> <!-- Ссылка на отзывы -->
-                
+                <li><a href="{% url 'about' %}">О компании</a></li>
+                <li><a href="{% url 'contacts' %}">Контакты</a></li>
+                <li><a href="{% url 'comments' %}">Отзывы</a></li>
             </ul>  
-            <!-- Блок с кнопкой "Войти" или именем пользователя с ссылкой на личный -->
-    {% if user.is_authenticated %}
-    <a href="{% url 'profile' %}" class="buy-btn">{{ user.username }}</a>  <!-- Ссылка на личный кабинет -->
-{% else %}
-    <a href="{% url 'login' %}" class="buy-btn">Войти</a>  <!-- Кнопка "Войти" -->
-{% endif %}
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="buy-btn">{{ user.username }}</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="buy-btn">Войти</a>
+            {% endif %}
         </nav>
     </header>
     <main>
@@ -65,51 +64,32 @@
             </div>
         </section>
         <section class="products">
-            <h2></h2>
+            <h2>Наши мотоциклы</h2>
             <div class="product-grid">
-                <div class="product-item">
-                    <img src="{% static 'images/bike1.jpg' %}" width="270" height="auto;">
-                    <h3>Honda CB1000R</h3>
-                    <p>Стильный и мощный</p>
-                    <a href="{% url 'to_order' %}" class="buy-btn">Заказать</a> <!-- Ссылка на 'to_order' -->
-                </div>
-                
-                <div class="product-item">
-                    <img src="{% static 'images/bike2.jpg' %}" width="270" height="auto;">
-                    <h3>Honda Shadow 1100</h3>
-                    <p>Скорость и комфорт</p>
-                    <a href="{% url 'to_order' %}" class="buy-btn">Заказать</a> <!-- Ссылка на 'to_order' -->
-                </div>
-                
-                <div class="product-item">
-                    <img src="{% static 'images/bike3.jpg' %}" width="270" height="auto;">
-                    <h3>Yamaha R1</h3>
-                    <p>Для настоящих гонщиков</p>
-                    <a href="{% url 'to_order' %}" class="buy-btn">Заказать</a> <!-- Ссылка на 'to_order' -->
-                </div>
-                
-                <div class="product-item">
-                    <img src="{% static 'images/bike4.jpg' %}" width="270" height="auto;">
-                    <h3>BMW R1250 GS</h3>
-                    <p>Для приключений и дальних путешествий</p>
-                    <a href="{% url 'to_order' %}" class="buy-btn">Заказать</a> <!-- Ссылка на 'to_order' -->
-                </div>
-                
+                {% for product in random_motos %}
+    <div class="product-item">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" width="270" height="auto">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <div class="actions">
+            <a href="{% url 'to_order' %}" class="buy-btn">Заказать</a>
+            <a href="{% url 'add_to_cart' product_id=product.id %}" class="buy-btn">Добавить в корзину</a>
+        </div>
+    </div>
+{% endfor %}
 
-                </div>
             </div>
         </section>
     </main>
-    <!-- Подключаем форму обратного звонка -->
+
     {% include 'main/callback_form.html' %}
+
     <footer>
         <p>&copy; 2025 Motoshop</p>
     </footer>
-    <!-- Подключаем Bootstrap JS и Popper.js для функционала -->
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-
-    <!-- Подключаем внешний файл callback.js -->
     <script src="{% static 'js/callback.js' %}"></script>
 </body>
 </html>
